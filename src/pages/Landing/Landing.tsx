@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from './components/Hero'
 import About from './components/About'
 import Pricing from './components/Pricing'
+import Contact from './components/Contact'
 import { Flex } from '@chakra-ui/react'
 
 const Landing: React.FC = () => {
@@ -10,6 +11,7 @@ const Landing: React.FC = () => {
             <Hero />
             <About />
             <Pricing />
+            <Contact />
         </Flex>
     )
 }
