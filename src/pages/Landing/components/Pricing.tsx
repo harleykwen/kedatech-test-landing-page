@@ -1,4 +1,5 @@
 import React from 'react'
+import useChakraHooks from '../../../hooks/chakra.hooks'
 import { IoCloseCircle, IoShieldCheckmark } from 'react-icons/io5'
 import { 
     Button,
@@ -13,7 +14,6 @@ import {
     Text, 
     Tr, 
 } from '@chakra-ui/react'
-import useChakraHooks from '../../../hooks/chakra.hooks'
 
 interface IPackage {
     price: string
@@ -107,7 +107,7 @@ const Pricing: React.FC = () => {
     const { BUTTON_MAIN_STYLE } = useChakraHooks()
 
     return (
-        <Flex>
+        <Flex id='pricing'>
             <Container padding='108px 12px' maxWidth='container.xl'>
                 <TableContainer marginX='auto'>
                     <Table variant='simple'>

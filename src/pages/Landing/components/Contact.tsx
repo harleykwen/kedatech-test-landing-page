@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
     const { BUTTON_MAIN_STYLE, INPUT_VISIBLE_STYLE } = useChakraHooks()
 
     return (
-        <Flex>
+        <Flex id='contact'>
             <Container padding='108px 12px' maxWidth='container.xl'>
                 <Text
                     color='#252430'

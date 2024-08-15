@@ -1,13 +1,20 @@
-import React from 'react'
-import { Link as ReactRouterLink } from 'react-router-dom'
+import React, { useRef } from 'react'
+import ModalLogin from './ModalLogin'
+import { HiOutlineMenuAlt3 } from 'react-icons/hi'
 import { 
     Button,
     Container, 
+    Drawer, 
+    DrawerBody, 
+    DrawerCloseButton, 
+    DrawerContent, 
+    DrawerOverlay, 
     Flex, 
+    Icon, 
+    IconButton, 
     Text,
     useDisclosure, 
 } from '@chakra-ui/react'
-import ModalLogin from './ModalLogin'
 
 interface INav {
     label: string
@@ -29,12 +36,21 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
     }
 
     const NAVS: INav[] = [
-        { label: 'About', href: '#about' },
-        { label: 'Pricing', href: '#pricing' },
-        { label: 'Contact', href: '#contact' },
+        { label: 'About', href: 'about' },
+        { label: 'Pricing', href: 'pricing' },
+        { label: 'Contact', href: 'contact' },
     ]
 
+    const btnDrawerRef = useRef<any>()
     const modalLoginDisclosure = useDisclosure()
+    const drawerDisclosure = useDisclosure()
+
+    const handleScroll = (id: string) => {
+        const element = document.getElementById(id)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+    }
 
     return (
         <Flex 
@@ -54,17 +70,21 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
                         fontSize='16px'
                     >KeDa ERP</Text>
 
-                    <Flex alignItems='center' gap='1rem'>
+                    <Flex
+                        display={{ base: 'none', sm: 'flex' }} 
+                        alignItems='center' 
+                        gap='1rem'
+                    >
                         {NAVS?.map((nav: INav, navIndex: number) => {
                             return (
                                 <Text
                                     key={navIndex}
-                                    as={ReactRouterLink}
-                                    to={nav?.href}
                                     color={isOnTop ? '#252430' : 'white'}
                                     transition='.6s'
                                     fontWeight='400'
                                     fontSize='16px'
+                                    cursor='pointer'
+                                    onClick={() => handleScroll(nav?.href)}
                                 >{nav?.label}</Text>
                             )
                         })}
@@ -86,7 +106,70 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
                             onClick={modalLoginDisclosure?.onOpen}
                         >Login</Button>
                     </Flex>
+
+                    <IconButton  
+                        ref={btnDrawerRef} 
+                        display={{ base: 'block', sm: 'none' }} 
+                        icon={<Icon as={HiOutlineMenuAlt3} />} 
+                        aria-label={'menu'} 
+                        onClick={drawerDisclosure?.onOpen}
+                    />
                 </Flex>
+
+                <Drawer
+                    isOpen={drawerDisclosure?.isOpen}
+                    placement='right'
+                    onClose={drawerDisclosure?.onClose}
+                    finalFocusRef={btnDrawerRef}
+                >
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerBody>
+                            <Flex
+                                direction='column'
+                                justifyContent='center'
+                                alignItems='center'
+                                gap='1rem'
+                                height='100%'
+                            >
+                                {NAVS?.map((nav: INav, navIndex: number) => {
+                                    return (
+                                        <Text
+                                            key={navIndex}
+                                            color='#252430'
+                                            transition='.6s'
+                                            fontWeight='400'
+                                            fontSize='16px'
+                                            cursor='pointer'
+                                            onClick={() => {
+                                                drawerDisclosure?.onClose()
+                                                handleScroll(nav?.href)
+                                            }}
+                                        >{nav?.label}</Text>
+                                    )
+                                })}
+                                <Button
+                                    {...BUTTON_STYLE}
+                                    variant='solid'
+                                    color='white'
+                                    backgroundColor={'#252430'}
+                                    _hover={{
+                                        backgroundColor: '#3a3944'
+                                    }}
+                                    _focus={{
+                                        backgroundColor: '#121218'
+                                    }}
+                                    _active={{
+                                        backgroundColor: '#121218'
+                                    }}
+                                    transition='.6s'
+                                    onClick={modalLoginDisclosure?.onOpen}
+                                >Login</Button>
+                            </Flex>
+                        </DrawerBody>
+                    </DrawerContent>
+                </Drawer>
 
                 <ModalLogin
                     isOpen={modalLoginDisclosure?.isOpen}

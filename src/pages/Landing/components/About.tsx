@@ -3,7 +3,7 @@ import { Center, Container, Flex, Text } from '@chakra-ui/react'
 
 const About: React.FC = () => {
     return (
-        <Flex backgroundColor='#252430'>
+        <Flex backgroundColor='#252430' id='about'>
             <Container padding='108px 12px' maxWidth='container.xl'>
                 <Flex as={Center}>
                     <Text 

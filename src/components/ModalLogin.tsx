@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import useChakraHooks from '../hooks/chakra.hooks'
 import { LuEye, LuEyeOff } from 'react-icons/lu'
 import { 
     Button,
@@ -17,7 +18,6 @@ import {
     ModalOverlay, 
     Text, 
 } from '@chakra-ui/react'
-import useChakraHooks from '../hooks/chakra.hooks'
 
 interface IModalLogin {
     isOpen: boolean
@@ -34,7 +34,7 @@ const ModalLogin: React.FC<IModalLogin> = (props: IModalLogin) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent borderRadius='16px'>
+            <ModalContent borderRadius='16px' margin='12px'>
                 <ModalHeader paddingTop='24px'>
                     <Text
                         color='#252430'
