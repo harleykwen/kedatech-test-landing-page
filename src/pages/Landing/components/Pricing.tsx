@@ -124,12 +124,8 @@ const Pricing: React.FC = () => {
     ]
 
     return (
-        <Flex
-            // minHeight='100vh'
-            // justifyContent='center'
-            // alignItems='center'
-        >
-            <Container padding='36px 12px' maxWidth='container.xl'>
+        <Flex>
+            <Container padding='108px 12px' maxWidth='container.xl'>
                 <TableContainer marginX='auto'>
                     <Table variant='simple'>
                         <Tbody>

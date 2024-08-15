@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
 
     return (
         <Flex>
-            <Container padding='36px 12px' maxWidth='container.xl'>
+            <Container padding='108px 12px' maxWidth='container.xl'>
                 <Text
                     color='#252430'
                     fontWeight='700'
