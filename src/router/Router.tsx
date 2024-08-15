@@ -1,8 +1,8 @@
 import React, { LazyExoticComponent, lazy } from 'react'
 import ROUTE_PATH from './routePath'
 import Error from '../pages/Error/Error'
-import { Route, Routes } from 'react-router-dom'
 import LandingLayout from '../layouts/LandingLayout'
+import { Route, Routes } from 'react-router-dom'
 
 const Landing: LazyExoticComponent<any> = lazy(() => import('../pages/Landing/Landing'))
 
