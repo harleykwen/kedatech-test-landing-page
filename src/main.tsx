@@ -6,6 +6,8 @@ import './index.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import RouteProvider from './router/RouteProvider.tsx'
 
+console.log({ theme })
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <RouteProvider>
