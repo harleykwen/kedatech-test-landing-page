@@ -4,8 +4,10 @@ import {
     Button,
     Container, 
     Flex, 
-    Text, 
+    Text,
+    useDisclosure, 
 } from '@chakra-ui/react'
+import ModalLogin from './ModalLogin'
 
 interface INav {
     label: string
@@ -19,24 +21,11 @@ interface IHeaderProps {
 const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
     const { isOnTop } = props
 
-    const BUTTON_PLAN_STYLE = {
+    const BUTTON_STYLE = {
         width: '100%',
         fontSize: '16px',
-        // color: '#252430',
         fontWeight: '400',
-        // padding: '16px 24px',
         borderRadius: '4px',
-        // backgroundColor: '#252430',
-        // height: '52px',
-        // _hover: {
-        //     backgroundColor: '#3a3944'
-        // },
-        // _focus: {
-        //     backgroundColor: '#121218'
-        // },
-        // _active: {
-        //     backgroundColor: '#121218'
-        // },
     }
 
     const NAVS: INav[] = [
@@ -44,6 +33,8 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
         { label: 'Pricing', href: '#pricing' },
         { label: 'Contact', href: '#contact' },
     ]
+
+    const modalLoginDisclosure = useDisclosure()
 
     return (
         <Flex 
@@ -78,7 +69,7 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
                             )
                         })}
                         <Button 
-                            {...BUTTON_PLAN_STYLE}
+                            {...BUTTON_STYLE}
                             variant='solid'
                             color={isOnTop ? 'white' : '#252430'}
                             backgroundColor={isOnTop ? '#252430' : 'white'}
@@ -92,9 +83,15 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
                                 backgroundColor: isOnTop ? '#121218' : 'white'
                             }}
                             transition='.6s'
+                            onClick={modalLoginDisclosure?.onOpen}
                         >Login</Button>
                     </Flex>
                 </Flex>
+
+                <ModalLogin
+                    isOpen={modalLoginDisclosure?.isOpen}
+                    onClose={modalLoginDisclosure?.onClose}
+                />
             </Container>
         </Flex>
     )

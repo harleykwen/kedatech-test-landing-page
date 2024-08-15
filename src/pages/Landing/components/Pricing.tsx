@@ -13,6 +13,7 @@ import {
     Text, 
     Tr, 
 } from '@chakra-ui/react'
+import useChakraHooks from '../../../hooks/chakra.hooks'
 
 interface IPackage {
     price: string
@@ -33,26 +34,6 @@ interface IPackagePrivilage {
 }
 
 const Pricing: React.FC = () => {
-    const BUTTON_PLAN_STYLE = {
-        width: '100%',
-        fontSize: '14px',
-        color: '#E6E9F5',
-        fontWeight: '600',
-        padding: '16px 24px',
-        borderRadius: '4px',
-        backgroundColor: '#252430',
-        height: '52px',
-        _hover: {
-            backgroundColor: '#3a3944'
-        },
-        _focus: {
-            backgroundColor: '#121218'
-        },
-        _active: {
-            backgroundColor: '#121218'
-        },
-    }
-
     const PACKAGE_PRIVILAGES: IPackagePrivilage[] = [
         {
             label: "Record incoming goods",
@@ -123,6 +104,8 @@ const Pricing: React.FC = () => {
         },
     ]
 
+    const { BUTTON_MAIN_STYLE } = useChakraHooks()
+
     return (
         <Flex>
             <Container padding='108px 12px' maxWidth='container.xl'>
@@ -187,7 +170,7 @@ const Pricing: React.FC = () => {
                                                         marginBottom='4px'
                                                     >/{pkg?.subscriptionType}</Text>
                                                 </Flex>
-                                                <Button {...BUTTON_PLAN_STYLE}>Choose This Plan</Button>
+                                                <Button {...BUTTON_MAIN_STYLE} height='52px'>Choose This Plan</Button>
                                             </Flex>
                                         </Td>
                                     )

@@ -10,27 +10,10 @@ import {
     Input, 
     Text, 
 } from '@chakra-ui/react'
+import useChakraHooks from '../../../hooks/chakra.hooks'
 
 const Contact: React.FC = () => {
-    const BUTTON_PLAN_STYLE = {
-        fontSize: '14px',
-        color: '#E6E9F5',
-        fontWeight: '600',
-        padding: '16px 24px',
-        borderRadius: '4px',
-        backgroundColor: '#252430',
-        height: '52px',
-        marginTop: '2rem',
-        _hover: {
-            backgroundColor: '#3a3944'
-        },
-        _focus: {
-            backgroundColor: '#121218'
-        },
-        _active: {
-            backgroundColor: '#121218'
-        },
-    }
+    const { BUTTON_MAIN_STYLE, INPUT_VISIBLE_STYLE } = useChakraHooks()
 
     return (
         <Flex>
@@ -58,48 +41,53 @@ const Contact: React.FC = () => {
                     <GridItem>
                         <FormControl>
                             <FormLabel color='#252430' fontSize='14px'>First Name</FormLabel>
-                            <Input type='text' fontSize='14px' />
+                            <Input {...INPUT_VISIBLE_STYLE} />
                         </FormControl>
                     </GridItem>
                     <GridItem>
                         <FormControl>
                             <FormLabel color='#252430' fontSize='14px'>Last Name</FormLabel>
-                            <Input type='text' fontSize='14px' />
+                            <Input {...INPUT_VISIBLE_STYLE} />
                         </FormControl>
                     </GridItem>
                     <GridItem>
                         <FormControl>
                             <FormLabel color='#252430' fontSize='14px'>Email</FormLabel>
-                            <Input type='email' fontSize='14px' />
+                            <Input {...INPUT_VISIBLE_STYLE} />
                         </FormControl>
                     </GridItem>
                     <GridItem>
                         <FormControl>
                             <FormLabel color='#252430' fontSize='14px'>Phone Number</FormLabel>
-                            <Input type='number' fontSize='14px' />
+                            <Input {...INPUT_VISIBLE_STYLE} />
                         </FormControl>
                     </GridItem>
                     <GridItem>
                         <FormControl>
                             <FormLabel color='#252430' fontSize='14px'>Organization Name</FormLabel>
-                            <Input type='text' fontSize='14px' />
+                            <Input {...INPUT_VISIBLE_STYLE} />
                         </FormControl>
                     </GridItem>
                     <GridItem>
                         <FormControl>
                             <FormLabel color='#252430' fontSize='14px'>Number Of Employees</FormLabel>
-                            <Input type='number' fontSize='14px' />
+                            <Input {...INPUT_VISIBLE_STYLE} />
                         </FormControl>
                     </GridItem>
                     <GridItem>
                         <FormControl>
                             <FormLabel color='#252430' fontSize='14px'>Business Email</FormLabel>
-                            <Input type='text' fontSize='14px' />
+                            <Input {...INPUT_VISIBLE_STYLE} />
                         </FormControl>
                     </GridItem>
                 </Grid>
 
-                <Button {...BUTTON_PLAN_STYLE}>Submit</Button>
+                <Button 
+                    {...BUTTON_MAIN_STYLE} 
+                    height='52px' 
+                    marginTop='2rem' 
+                    width='max-content'
+                >Submit</Button>
             </Container>
         </Flex>
     )
