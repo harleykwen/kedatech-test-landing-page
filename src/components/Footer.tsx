@@ -9,7 +9,11 @@ const Footer: React.FC = () => {
                 paddingBottom='60px' 
                 maxWidth='container.xl'
             >
-                <Flex alignItems='center' justifyContent='space-between'>
+                <Flex 
+                    direction={{ base: 'column', sm: 'row' }}
+                    alignItems='center' 
+                    justifyContent='space-between'
+                >
                     <Text
                         color='white'
                         fontWeight='300'

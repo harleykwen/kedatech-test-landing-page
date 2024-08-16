@@ -60,6 +60,7 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
             top='0px'
             left='0px'
             right='0px'
+            zIndex='999'
         >
             <Container maxWidth='container.xl' paddingY='24px'>
                 <Flex alignItems='center' justifyContent='space-between'>
@@ -164,7 +165,10 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
                                         backgroundColor: '#121218'
                                     }}
                                     transition='.6s'
-                                    onClick={modalLoginDisclosure?.onOpen}
+                                    onClick={() => {
+                                        modalLoginDisclosure?.onOpen()
+                                        drawerDisclosure?.onClose()
+                                    }}
                                 >Login</Button>
                             </Flex>
                         </DrawerBody>
